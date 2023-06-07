@@ -1,6 +1,8 @@
 import SectionHero from '@/app/(home)/SectionHero';
 import Container from '@/components/ui/Container';
 import PagePadding from '@/components/ui/PagePadding';
+import ChapterContent from './ChapterContent';
+import Navigation from './Navigation';
 
 const api_key = process.env.API_KEY;
 
@@ -57,13 +59,13 @@ export default async function Page({
   const bookNameData = getBookName(book);
 
   // Wait for the promises to resolve
-  const [chepterNumber, chepter, bookName] = await Promise.all([
+  const [chepterNumber, chapterD, bookName] = await Promise.all([
     chepterNumberData,
     chepterData,
     bookNameData,
   ]);
 
-  //console.log(chapter, book);
+  console.log(chapter);
 
   return (
     <main className='py-10 xl:py-16'>
@@ -71,9 +73,14 @@ export default async function Page({
         <Container>
           <div className='flex flex-col gap-12 lg:gap-16'>
             <SectionHero title={bookName[0].n} />
-
             {/* chapter content */}
+            <ChapterContent chapter={chapter} chapterD={chapterD} />
             {/* bottom navigation */}
+            <Navigation
+              chapter={chapter}
+              book={book}
+              chepterNumber={chepterNumber}
+            />
           </div>
         </Container>
       </PagePadding>
