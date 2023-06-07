@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import TypographyH2 from '@/components/ui/TypographyH2';
 
 type SectionMainProps = {
   booksData: {
@@ -30,7 +29,7 @@ const SectionMain: FC<SectionMainProps> = ({ booksData }) => {
           <li key={book.b}>
             <Link
               className='transition duration-500 px-4 flex items-center min-h-[74px] gap-7 rounded border border-slate-200 group hover:bg-slate-100'
-              href={`/book/${book.b}`}>
+              href={`/${book.b}/1`}>
               <div className='w-10 h-10 rounded bg-slate-200/80 flex items-center justify-center rotate-45 text-sm transition duration-500 group-hover:rotate-0'>
                 <span className='-rotate-45 group-hover:rotate-0 transition duration-500'>
                   {book.b}
