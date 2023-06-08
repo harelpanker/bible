@@ -70,7 +70,7 @@ export default async function Page({
   return (
     <main className='py-10 xl:py-16'>
       <PagePadding>
-        <Container>
+        <Container isRead>
           <div className='flex flex-col gap-12 lg:gap-16'>
             <SectionHero title={bookName[0].n} />
             {/* chapter content */}

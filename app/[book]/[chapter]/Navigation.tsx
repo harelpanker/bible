@@ -8,11 +8,12 @@ type NavigationProps = {
 };
 
 const Navigation: FC<NavigationProps> = ({ chepterNumber, book, chapter }) => {
+  // const hideNextCompletly =
+  const hideNextButton = parseInt(chapter) === chepterNumber.chapterCount;
   return (
     <section>
       <nav>
-        {/* next button */}
-        {parseInt(chapter) === chepterNumber.chapterCount ? (
+        {hideNextButton ? (
           <Link href={`/${parseInt(book) + 1}/1`}>Next Book</Link>
         ) : (
           <Link href={`/${parseInt(book)}/${parseInt(chapter) + 1}`}>
