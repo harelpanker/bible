@@ -1,7 +1,6 @@
 import SectionHero from '../(home)/SectionHero';
 import SectionMain from '../(home)/SectionMain';
 import Container from '@/components/ui/Container';
-import PagePadding from '@/components/ui/PagePadding';
 
 const api_key = process.env.API_KEY;
 const url = 'https://iq-bible.p.rapidapi.com/GetBooksNT?language=english';
@@ -26,14 +25,14 @@ export default async function OTPage() {
 
   return (
     <main className='py-10 xl:py-16'>
-      <PagePadding>
+
         <Container>
           <div className='flex flex-col gap-12 lg:gap-16'>
             <SectionHero title='New Testament' />
             <SectionMain booksData={data} />
           </div>
         </Container>
-      </PagePadding>
+
     </main>
   );
 }

@@ -7,7 +7,10 @@ type ContainerProps = {
 
 const Container: FC<ContainerProps> = ({ children, isRead }) => {
   return (
-    <div className={`${isRead ? 'max-w-5xl' : ''} container mx-auto`}>
+    <div
+      className={`${
+        isRead ? 'max-w-5xl' : ''
+      } container mx-auto px-6 md:px-12 overflow-hidden`}>
       {children}
     </div>
   );

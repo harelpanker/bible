@@ -24,7 +24,7 @@ const ChapterContent: FC<ChapterContentProps> = ({ chapterD, chapter }) => {
                 {item.c} : {item.v}
               </div>
             </div>
-            <p className='text-xl font-medium max-w-4xl leading-relaxed'>
+            <p className='text-xl leading-relaxed lg:text-3xl lg:leading-relaxed font-medium max-w-4xl'>
               {item.t}
             </p>
           </li>
