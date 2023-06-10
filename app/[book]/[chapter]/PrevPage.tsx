@@ -1,8 +1,8 @@
 'use client';
 import { FC } from 'react';
 import { useRouter } from 'next/navigation';
-import { MoveLeft } from 'lucide';
 import { Button } from '@/components/ui/button';
+import { MoveLeftIcon } from 'lucide-react';
 
 type PrevPageProps = {};
 
@@ -16,8 +16,8 @@ const PrevPage: FC<PrevPageProps> = ({}) => {
   return (
     <div>
       <Button onClick={handlePrevPage} variant='ghost'>
-        {/* <MoveLeft size={24} />  */}
-        <span>Back</span>
+        <MoveLeftIcon size={16} />
+        <span className='ml-2'>Back</span>
       </Button>
     </div>
   );
