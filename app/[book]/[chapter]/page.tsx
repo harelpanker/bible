@@ -2,6 +2,7 @@ import SectionHero from '@/app/(home)/SectionHero';
 import Container from '@/components/ui/Container';
 import ChapterContent from './ChapterContent';
 import Navigation from './Navigation';
+import PrevPage from './PrevPage';
 
 const api_key = process.env.API_KEY;
 
@@ -30,7 +31,6 @@ async function getTotalNumberOfCheptersInPrevBook(book: string) {
   const res = await fetch(url, options);
   return res.json();
 }
-
 async function getBookName(book: string) {
   const url = `https://iq-bible.p.rapidapi.com/GetBookNameByBookId?bookId=${book}&language=english`;
   const options = {
@@ -43,7 +43,6 @@ async function getBookName(book: string) {
   const res = await fetch(url, options);
   return res.json();
 }
-
 async function getChepters(book: string, chapter: string) {
   const url = `https://iq-bible.p.rapidapi.com/GetChapter?bookId=${book}&chapterId=${chapter}&versionId=kjv`;
 
@@ -84,7 +83,10 @@ export default async function Page({
     <main className='py-10 xl:py-16'>
       <Container isRead>
         <div className='flex flex-col gap-12 lg:gap-16'>
-          <SectionHero title={bookName[0].n} />
+          <div>
+            <PrevPage />
+            <SectionHero title={bookName[0].n} />
+          </div>
           {/* chapter content */}
           <ChapterContent chapter={chapter} chapterD={chapterD} />
           {/* bottom navigation */}

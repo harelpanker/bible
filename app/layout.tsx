@@ -21,7 +21,7 @@ type LayoutProps = {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html lang='en'>
+    <html lang='en' dir='ltr' className='scroll-smooth'>
       <body
         className={`${satoshi.variable} antialiased bg-slate-50 text-slate-900 font-sans`}>
         {children}

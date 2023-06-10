@@ -1,5 +1,5 @@
-import TypographyH2 from '@/components/ui/TypographyH2';
 import { FC } from 'react';
+import TypographyH2 from '@/components/ui/TypographyH2';
 
 type ChapterContentProps = {
   chapterD: {
