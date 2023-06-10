@@ -15,7 +15,7 @@ const PrevPage: FC<PrevPageProps> = ({}) => {
 
   return (
     <div>
-      <Button onClick={handlePrevPage} variant='ghost'>
+      <Button onClick={handlePrevPage} variant='ghost' className='pl-0'>
         <MoveLeftIcon size={16} />
         <span className='ml-2'>Back</span>
       </Button>

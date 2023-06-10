@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import './globals.css';
 import localFont from 'next/font/local';
 
@@ -25,6 +26,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <body
         className={`${satoshi.variable} antialiased bg-slate-50 text-slate-900 font-sans`}>
         {children}
+        <Footer />
       </body>
     </html>
   );
