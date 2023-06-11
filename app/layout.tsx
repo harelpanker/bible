@@ -24,9 +24,11 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang='en' dir='ltr' className='scroll-smooth'>
       <body
-        className={`${satoshi.variable} antialiased bg-slate-50 text-slate-900 font-sans flex flex-col justify-between min-h-100dvh`}>
-        {children}
-        <Footer />
+        className={`${satoshi.variable} antialiased bg-slate-50 text-slate-900 font-sans`}>
+        <div className='flex flex-col justify-between min-h-100dvh'>
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
