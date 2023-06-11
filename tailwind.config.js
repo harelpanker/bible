@@ -12,6 +12,9 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    minHeight: {
+      '100dvh': '100dvh',
+    },
     extend: {
       colors: {
         border: 'hsl(var(--border))',

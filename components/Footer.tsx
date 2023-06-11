@@ -8,6 +8,13 @@ import TypographyH2 from './ui/TypographyH2';
 
 type FooterProps = {};
 
+const links = [
+  { id: '1', title: 'Home', href: '/' },
+  { id: '2', title: 'Old testiment', href: '/ot' },
+  { id: '3', title: 'New testiment', href: '/nt' },
+  { id: '4', title: 'Search', href: '/search' },
+];
+
 const Footer: FC<FooterProps> = ({}) => {
   return (
     <footer className='pt-20 pb-5'>
@@ -22,12 +29,11 @@ const Footer: FC<FooterProps> = ({}) => {
             <nav className='flex flex-col gap-3'>
               <TypographyH2>Navigate</TypographyH2>
               <ul className='flex flex-col gap-2'>
-                <li>
-                  <Link href='/ot'>Old testiment</Link>
-                </li>
-                <li>
-                  <Link href='/nt'>New testiment</Link>
-                </li>
+                {links.map((item) => (
+                  <li key={item.id}>
+                    <Link href={item.href}>{item.title}</Link>
+                  </li>
+                ))}
               </ul>
             </nav>
           </div>
