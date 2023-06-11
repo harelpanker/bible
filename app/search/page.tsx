@@ -32,17 +32,14 @@ const Page = ({}) => {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     // async request which may result error
-    console.log(data.search_query);
-    // data
-    const api_key = process.env.API_KEY;
+    const api_key = process.env.NEXT_PUBLIC_API_KEY;
     try {
       const response = await fetch(
         `https://iq-bible.p.rapidapi.com/GetSearch?query=${data.search_query}&versionId=kjv`,
         {
           method: 'GET',
           headers: {
-            'X-RapidAPI-Key':
-              '07f362c51dmsh492e0ca1027aa4bp128e6ejsnaf5cb0fd7ef0',
+            'X-RapidAPI-Key': `${api_key}`,
             'X-RapidAPI-Host': 'iq-bible.p.rapidapi.com',
           },
         }
