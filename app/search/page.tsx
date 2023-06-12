@@ -10,6 +10,14 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+type ResaultProps = {
+  id: string;
+  b: string;
+  c: string;
+  v: string;
+  t: string;
+};
+
 // form
 const schema = yup
   .object({
@@ -22,9 +30,13 @@ type Inputs = {
 };
 
 const Page = ({}) => {
+  const [resaults, setResaults] = useState([]);
+  const [paginationNumber, setPaginationNumber] = useState(12);
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<Inputs>({
     resolver: yupResolver(schema),
@@ -45,14 +57,8 @@ const Page = ({}) => {
         }
       );
       const result = await response.json();
-      //   [{
-      //       id: '08004017',
-      //       b: '8',
-      //       c: '4',
-      //       v: '17',
-      //       t:
-      //         'And the women her neighbors gave it a name, saying, There is a son born to Naomi; and they called his name Obed: he is the father of Jesse, the father of David.'
-      //     },
+      setResaults(result);
+      reset();
     } catch (error) {
       console.error(error);
     }
@@ -65,7 +71,7 @@ const Page = ({}) => {
           <SectionHero title='Search' />
           {/* search component */}
           <form
-            className='flex gap-2 w-full max-w-md mx-auto'
+            className='flex gap-2 w-full max-w-md mx-auto pb-2'
             onSubmit={handleSubmit(onSubmit)}>
             <div className='flex flex-col gap-2 grow'>
               <Input
@@ -84,7 +90,37 @@ const Page = ({}) => {
             <Button type='submit'>Search</Button>
           </form>
           {/* resaults */}
-          <div></div>
+          {resaults.length > 0 && (
+            <div className='flex flex-col gap-6 lg:gap-12'>
+              <ul className='grid grid-cols-1 gap-6 divide-y divide-y-slate-300'>
+                {resaults
+                  .slice(0, paginationNumber)
+                  .map((item: ResaultProps) => (
+                    <li
+                      className='pt-6 first:pt-0 flex flex-col gap-3'
+                      key={item.id}>
+                      <div className='flex w-full justify-end'>
+                        <div>
+                          {item.c} : {item.v}
+                        </div>
+                      </div>
+                      <p className='text-xl leading-relaxed lg:text-3xl lg:leading-relaxed font-medium max-w-4xl'>
+                        {item.t}
+                      </p>
+                    </li>
+                  ))}
+              </ul>
+              {/* Load more button  */}
+              {paginationNumber < resaults.length && (
+                <div className='flex'>
+                  <Button
+                    onClick={() => setPaginationNumber(paginationNumber + 12)}>
+                    Load more
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </Container>
     </main>
