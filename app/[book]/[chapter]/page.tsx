@@ -80,7 +80,7 @@ export default async function Page({
     ]);
 
   return (
-    <main className='py-10 xl:py-16'>
+
       <Container isRead>
         <div className='flex flex-col gap-12 lg:gap-16'>
           <div>
@@ -98,6 +98,6 @@ export default async function Page({
           />
         </div>
       </Container>
-    </main>
+
   );
 }

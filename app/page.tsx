@@ -26,7 +26,7 @@ export default async function Home() {
   const data = await getData();
 
   return (
-    <main className='py-10 xl:py-16'>
+
 
         <Container>
           <div className='flex flex-col gap-12 lg:gap-16'>
@@ -35,6 +35,6 @@ export default async function Home() {
           </div>
         </Container>
 
-    </main>
+
   );
 }

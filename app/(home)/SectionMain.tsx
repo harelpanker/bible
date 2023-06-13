@@ -6,9 +6,11 @@ type SectionMainProps = {
     n: string;
     b: string;
   }[];
+  nt?: boolean;
+  ot?: boolean;
 };
 
-const SectionMain: FC<SectionMainProps> = ({ booksData }) => {
+const SectionMain: FC<SectionMainProps> = ({ booksData, nt, ot }) => {
   return (
     <section className='flex flex-col gap-3'>
       <nav>
@@ -16,12 +18,16 @@ const SectionMain: FC<SectionMainProps> = ({ booksData }) => {
           <li className='scroll-m-20 pb-2 font-semibold tracking-tight transition-colors first:mt-0'>
             <Link href='/'>All</Link>
           </li>
-          <li className='scroll-m-20 pb-2 font-semibold tracking-tight transition-colors first:mt-0'>
-            <Link href='/ot'>Old Testament</Link>
-          </li>
-          <li className='scroll-m-20 pb-2 font-semibold tracking-tight transition-colors first:mt-0'>
-            <Link href='/nt'>New Testament</Link>
-          </li>
+          {!ot && (
+            <li className='scroll-m-20 pb-2 font-semibold tracking-tight transition-colors first:mt-0'>
+              <Link href='/ot'>Old Testament</Link>
+            </li>
+          )}
+          {!nt && (
+            <li className='scroll-m-20 pb-2 font-semibold tracking-tight transition-colors first:mt-0'>
+              <Link href='/nt'>New Testament</Link>
+            </li>
+          )}
         </ul>
       </nav>
       <ul className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>

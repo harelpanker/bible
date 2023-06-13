@@ -65,65 +65,61 @@ const Page = ({}) => {
   };
 
   return (
-    <main className='py-10 xl:py-16'>
-      <Container isRead>
-        <div className='flex flex-col gap-12 lg:gap-16'>
-          <SectionHero title='Search' />
-          {/* search component */}
-          <form
-            className='flex gap-2 w-full max-w-md mx-auto pb-2'
-            onSubmit={handleSubmit(onSubmit)}>
-            <div className='flex flex-col gap-2 grow'>
-              <Input
-                {...register('search_query')}
-                type='text'
-                id='search_query'
-                placeholder='Search...'
-                autoFocus
-              />
-              {errors.search_query && (
-                <span className='text-red-500 text-sm'>
-                  {errors.search_query?.message}
-                </span>
-              )}
-            </div>
-            <Button type='submit'>Search</Button>
-          </form>
-          {/* resaults */}
-          {resaults.length > 0 && (
-            <div className='flex flex-col gap-6 lg:gap-12'>
-              <ul className='grid grid-cols-1 gap-6 divide-y divide-y-slate-300'>
-                {resaults
-                  .slice(0, paginationNumber)
-                  .map((item: ResaultProps) => (
-                    <li
-                      className='pt-6 first:pt-0 flex flex-col gap-3'
-                      key={item.id}>
-                      <div className='flex w-full justify-end'>
-                        <div>
-                          {item.c} : {item.v}
-                        </div>
-                      </div>
-                      <p className='text-xl leading-relaxed lg:text-3xl lg:leading-relaxed font-medium max-w-4xl'>
-                        {item.t}
-                      </p>
-                    </li>
-                  ))}
-              </ul>
-              {/* Load more button  */}
-              {paginationNumber < resaults.length && (
-                <div className='flex'>
-                  <Button
-                    onClick={() => setPaginationNumber(paginationNumber + 12)}>
-                    Load more
-                  </Button>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </Container>
-    </main>
+    <Container isRead>
+      <div className='flex flex-col gap-12 lg:gap-16'>
+        <SectionHero title='Search' />
+        {/* search component */}
+        <form
+          className='flex gap-2 w-full max-w-md mx-auto pb-2'
+          onSubmit={handleSubmit(onSubmit)}>
+          <div className='flex flex-col gap-2 grow'>
+            <Input
+              {...register('search_query')}
+              type='text'
+              id='search_query'
+              placeholder='Search...'
+              autoFocus
+            />
+            {errors.search_query && (
+              <span className='text-red-500 text-sm'>
+                {errors.search_query?.message}
+              </span>
+            )}
+          </div>
+          <Button type='submit'>Search</Button>
+        </form>
+        {/* resaults */}
+        {resaults.length > 0 && (
+          <div className='flex flex-col gap-6 lg:gap-12'>
+            <ul className='grid grid-cols-1 gap-6 divide-y divide-y-slate-300'>
+              {resaults.slice(0, paginationNumber).map((item: ResaultProps) => (
+                <li
+                  className='pt-6 first:pt-0 flex flex-col gap-3'
+                  key={item.id}>
+                  <div className='flex w-full justify-end'>
+                    <div>
+                      {item.c} : {item.v}
+                    </div>
+                  </div>
+                  <p className='text-xl leading-relaxed lg:text-3xl lg:leading-relaxed font-medium max-w-4xl'>
+                    {item.t}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            {/* Load more button  */}
+            {paginationNumber < resaults.length && (
+              <div className='flex'>
+                <Button
+                  onClick={() => setPaginationNumber(paginationNumber + 12)}>
+                  Load more
+                </Button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </Container>
   );
 };
 

@@ -24,15 +24,11 @@ export default async function OTPage() {
   const data = await getData();
 
   return (
-    <main className='py-10 xl:py-16'>
-
-        <Container>
-          <div className='flex flex-col gap-12 lg:gap-16'>
-            <SectionHero title='New Testament' />
-            <SectionMain booksData={data} />
-          </div>
-        </Container>
-
-    </main>
+    <Container>
+      <div className='flex flex-col gap-12 lg:gap-16'>
+        <SectionHero title='New Testament' />
+        <SectionMain booksData={data} nt />
+      </div>
+    </Container>
   );
 }
