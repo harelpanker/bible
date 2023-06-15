@@ -80,7 +80,6 @@ export default async function Page({
     ]);
 
   return (
-
       <Container isRead>
         <div className='flex flex-col gap-12 lg:gap-16'>
           <div>
@@ -98,6 +97,5 @@ export default async function Page({
           />
         </div>
       </Container>
-
   );
 }
