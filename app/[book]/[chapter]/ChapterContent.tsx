@@ -23,7 +23,7 @@ type ChapterContentProps = {
   }[];
   chapter?: string;
   share?: boolean;
-  chepterNumber: { chapterCount: number };
+  chepterNumber?: { chapterCount: number };
 };
 
 const ChapterContent: FC<ChapterContentProps> = ({
@@ -36,7 +36,7 @@ const ChapterContent: FC<ChapterContentProps> = ({
 
   return (
     <section className='flex flex-col gap-12'>
-      {chapter && (
+      {chapter && chepterNumber && (
         <div className='flex'>
           <DropdownMenu>
             <DropdownMenuTrigger className='rounded py-1 px-3 border border-slate-200 bg-slate-100 flex items-center justify-center gap-2'>
@@ -45,7 +45,7 @@ const ChapterContent: FC<ChapterContentProps> = ({
             </DropdownMenuTrigger>
             <DropdownMenuContent className='flex flex-col gap-2 max-h-72 overflow-auto'>
               {Array.from(
-                { length: chepterNumber.chapterCount },
+                { length: chepterNumber?.chapterCount },
                 (_, i) => i + 1
               ).map((id) => (
                 <DropdownMenuItem key={id}>
