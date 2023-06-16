@@ -80,22 +80,26 @@ export default async function Page({
     ]);
 
   return (
-      <Container isRead>
-        <div className='flex flex-col gap-12 lg:gap-16'>
-          <div>
-            <PrevPage />
-            <SectionHero title={bookName[0].n} />
-          </div>
-          {/* chapter content */}
-          <ChapterContent chapter={chapter} chapterD={chapterD} />
-          {/* bottom navigation */}
-          <Navigation
-            chapter={chapter}
-            chepterPrevNumber={chepterPrevNumber}
-            book={book}
-            chepterNumber={chepterNumber}
-          />
+    <Container isRead>
+      <div className='flex flex-col gap-12 lg:gap-16'>
+        <div>
+          <PrevPage />
+          <SectionHero title={bookName[0].n} />
         </div>
-      </Container>
+        {/* chapter content */}
+        <ChapterContent
+          chapter={chapter}
+          chapterD={chapterD}
+          chepterNumber={chepterNumber}
+        />
+        {/* bottom navigation */}
+        <Navigation
+          chapter={chapter}
+          chepterPrevNumber={chepterPrevNumber}
+          book={book}
+          chepterNumber={chepterNumber}
+        />
+      </div>
+    </Container>
   );
 }

@@ -1,4 +1,5 @@
 'use client';
+
 import { FC } from 'react';
 import TypographyH2 from '@/components/ui/TypographyH2';
 import Link from 'next/link';
@@ -17,9 +18,11 @@ type ChapterContentProps = {
   }[];
   chapter?: string;
   share?: boolean;
+  chepterNumber: { chapterCount: number };
 };
 
 const ChapterContent: FC<ChapterContentProps> = ({
+  chepterNumber,
   chapterD,
   chapter,
   share,
