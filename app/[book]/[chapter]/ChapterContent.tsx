@@ -1,9 +1,11 @@
+'use client';
 import { FC } from 'react';
 import TypographyH2 from '@/components/ui/TypographyH2';
 import Link from 'next/link';
+import { RWebShare } from 'react-web-share'; // https://github.com/hc-oss/react-web-share
 import { Link as LinkIcon, Share } from 'lucide-react';
 
-// https://www.npmjs.com/package/react-web-share
+import { usePathname } from 'next/navigation';
 
 type ChapterContentProps = {
   chapterD: {
@@ -22,21 +24,30 @@ const ChapterContent: FC<ChapterContentProps> = ({
   chapter,
   share,
 }) => {
+  const pathname = usePathname();
+
   return (
     <section className='flex flex-col gap-12'>
       {chapter && <TypographyH2>Chapter {chapter}</TypographyH2>}
       <ul className='grid grid-cols-1 gap-6 divide-y divide-y-slate-300'>
         {chapterD.map((item) => (
-          <li className='pt-6 first:pt-0 flex flex-col gap-3' key={item.id}>
-            <div
-              className={`flex w-full ${
-                !share ? 'justify-between' : 'justify-end'
-              }`}>
+          <li className='pt-6 first:pt-0 flex flex-col gap-5' key={item.id}>
+            <div className={`flex w-full justify-between`}>
               {!share ? (
                 <Link href={`/${item.b}/${item.c}/${item.id}`}>
                   <LinkIcon className='w-4 h-4' />
                 </Link>
-              ) : null}
+              ) : (
+                <RWebShare
+                  data={{
+                    text: `${item.t}`,
+                    url: `${pathname}`,
+                  }}>
+                  <button>
+                    <Share className='w-4 h-4' />
+                  </button>
+                </RWebShare>
+              )}
               <div>
                 {item.c} : {item.v}
               </div>
