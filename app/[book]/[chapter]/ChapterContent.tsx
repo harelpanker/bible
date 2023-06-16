@@ -2,8 +2,7 @@
 
 import { FC } from 'react';
 import Link from 'next/link';
-import { RWebShare } from 'react-web-share'; // https://github.com/hc-oss/react-web-share
-import { Link as LinkIcon, Share, ChevronDown } from 'lucide-react';
+import { Link as LinkIcon, ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-import { usePathname } from 'next/navigation';
+import Share from './Share';
 
 type ChapterContentProps = {
   chapterD: {
@@ -32,8 +31,6 @@ const ChapterContent: FC<ChapterContentProps> = ({
   chapter,
   share,
 }) => {
-  const pathname = usePathname();
-
   return (
     <section className='flex flex-col gap-12'>
       {chapter && chepterNumber && (
@@ -67,15 +64,7 @@ const ChapterContent: FC<ChapterContentProps> = ({
                   <LinkIcon className='w-4 h-4' />
                 </Link>
               ) : (
-                <RWebShare
-                  data={{
-                    text: `${item.t}`,
-                    url: `${pathname}`,
-                  }}>
-                  <button>
-                    <Share className='w-4 h-4' />
-                  </button>
-                </RWebShare>
+                <Share />
               )}
               <div>
                 {item.c} : {item.v}
