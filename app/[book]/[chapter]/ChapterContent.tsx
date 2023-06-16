@@ -1,10 +1,15 @@
 'use client';
 
 import { FC } from 'react';
-import TypographyH2 from '@/components/ui/TypographyH2';
 import Link from 'next/link';
 import { RWebShare } from 'react-web-share'; // https://github.com/hc-oss/react-web-share
-import { Link as LinkIcon, Share } from 'lucide-react';
+import { Link as LinkIcon, Share, ChevronDown } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 import { usePathname } from 'next/navigation';
 
@@ -31,7 +36,28 @@ const ChapterContent: FC<ChapterContentProps> = ({
 
   return (
     <section className='flex flex-col gap-12'>
-      {chapter && <TypographyH2>Chapter {chapter}</TypographyH2>}
+      {chapter && (
+        <div className='flex'>
+          <DropdownMenu>
+            <DropdownMenuTrigger className='rounded py-1 px-3 border border-slate-200 bg-slate-100 flex items-center justify-center gap-2'>
+              <span>Chapter {chapter}</span>{' '}
+              <ChevronDown className='text-slate-700 w-4 h-4' />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className='flex flex-col gap-2 max-h-72 overflow-auto'>
+              {Array.from(
+                { length: chepterNumber.chapterCount },
+                (_, i) => i + 1
+              ).map((id) => (
+                <DropdownMenuItem key={id}>
+                  <Link
+                    href={`/${chapterD[0].b}/${id}`}>{`Chapter ${id}`}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      )}
+
       <ul className='grid grid-cols-1 gap-6 divide-y divide-y-slate-300'>
         {chapterD.map((item) => (
           <li className='pt-6 first:pt-0 flex flex-col gap-5' key={item.id}>
