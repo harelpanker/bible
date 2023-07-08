@@ -5,6 +5,8 @@ import Container from '@/components/ui/Container';
 import SectionHero from '../(home)/SectionHero';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import Link from 'next/link';
+import { Link as LinkIcon } from 'lucide-react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -70,9 +72,10 @@ const Page = ({}) => {
         <SectionHero title='Search' />
         {/* search component */}
         <form
-          className='flex gap-2 w-full max-w-md mx-auto pb-2'
-          onSubmit={handleSubmit(onSubmit)}>
-          <div className='flex flex-col gap-2 grow'>
+          className='mx-auto flex w-full max-w-md gap-2 pb-2'
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className='flex grow flex-col gap-2'>
             <Input
               {...register('search_query')}
               type='text'
@@ -81,7 +84,7 @@ const Page = ({}) => {
               autoFocus
             />
             {errors.search_query && (
-              <span className='text-red-500 text-sm'>
+              <span className='text-sm text-red-500'>
                 {errors.search_query?.message}
               </span>
             )}
@@ -91,17 +94,22 @@ const Page = ({}) => {
         {/* resaults */}
         {resaults.length > 0 && (
           <div className='flex flex-col gap-6 lg:gap-12'>
-            <ul className='grid grid-cols-1 gap-6 divide-y divide-y-slate-300'>
+            {/* {console.log(resaults)} b, c, v */}
+            <ul className='divide-y-slate-300 grid grid-cols-1 gap-6 divide-y'>
               {resaults.slice(0, paginationNumber).map((item: ResaultProps) => (
                 <li
-                  className='pt-6 first:pt-0 flex flex-col gap-3'
-                  key={item.id}>
-                  <div className='flex w-full justify-end'>
+                  className='flex flex-col gap-3 pt-6 first:pt-0'
+                  key={item.id}
+                >
+                  <div className='flex w-full items-center justify-between'>
+                    <Link href={`/${item.b}/${item.c}/${item.id}`}>
+                      <LinkIcon className='h-4 w-4' />
+                    </Link>
                     <div>
                       {item.c} : {item.v}
                     </div>
                   </div>
-                  <p className='text-xl leading-relaxed lg:text-3xl lg:leading-relaxed font-medium max-w-4xl'>
+                  <p className='max-w-4xl text-xl font-medium leading-relaxed lg:text-3xl lg:leading-relaxed'>
                     {item.t}
                   </p>
                 </li>
@@ -111,7 +119,8 @@ const Page = ({}) => {
             {paginationNumber < resaults.length && (
               <div className='flex'>
                 <Button
-                  onClick={() => setPaginationNumber(paginationNumber + 12)}>
+                  onClick={() => setPaginationNumber(paginationNumber + 12)}
+                >
                   Load more
                 </Button>
               </div>
