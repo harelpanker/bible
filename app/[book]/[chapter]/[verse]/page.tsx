@@ -26,8 +26,6 @@ export default async function Page({
   const verseD = getVerse(verse);
   const [verseData] = await Promise.all([verseD]);
 
-  console.log(verseData);
-
   if (verseData.length === 0 || !verseData) {
     notFound();
   }

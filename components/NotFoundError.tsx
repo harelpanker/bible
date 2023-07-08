@@ -2,10 +2,10 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from './ui/Container';
-
-import hero_icon from '/public/images/hero_icon.svg';
 import TypographyH1 from './ui/TypographyH1';
 import { Button } from '@/components/ui/button';
+
+import hero_icon from '/public/images/hero_icon.svg';
 
 type NotFoundProps = {};
 
