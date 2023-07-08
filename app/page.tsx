@@ -26,15 +26,11 @@ export default async function Home() {
   const data = await getData();
 
   return (
-
-
-        <Container>
-          <div className='flex flex-col gap-12 lg:gap-16'>
-            <SectionHero />
-            <SectionMain booksData={data} />
-          </div>
-        </Container>
-
-
+    <Container>
+      <div className='flex flex-col gap-12 lg:gap-16'>
+        <SectionHero />
+        <SectionMain booksData={data} />
+      </div>
+    </Container>
   );
 }

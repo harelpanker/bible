@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import Header from '@/components/navbar/Header';
 
 export const metadata = {
-  title: 'The Holy Bible Web App',
+  title: 'The Holy Bible',
   description: '',
 };
 
@@ -26,11 +26,12 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang='en' dir='ltr' className='scroll-smooth'>
       <body
-        className={`${satoshi.variable} antialiased bg-slate-50 text-slate-900 font-sans`}>
-        <div className='flex flex-col justify-between min-h-100dvh'>
+        className={`${satoshi.variable} bg-slate-50 font-sans text-slate-900 antialiased`}
+      >
+        <div className='flex min-h-100dvh flex-col justify-between'>
           <div>
             <Header />
-            <main className='py-10 xl:py-16 relative z-10 overflow-hidden'>
+            <main className='relative z-10 overflow-hidden py-10 xl:py-16'>
               {children}
             </main>
           </div>
