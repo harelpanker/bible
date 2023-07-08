@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import Container from '@/components/ui/Container';
 import PrevPage from '../PrevPage';
 import ChapterContent from '../ChapterContent';
@@ -24,6 +25,12 @@ export default async function Page({
 }) {
   const verseD = getVerse(verse);
   const [verseData] = await Promise.all([verseD]);
+
+  console.log(verseData);
+
+  if (verseData.length === 0 || !verseData) {
+    notFound();
+  }
 
   return (
     <Container isRead>

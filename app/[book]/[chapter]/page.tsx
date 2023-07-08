@@ -3,6 +3,7 @@ import Container from '@/components/ui/Container';
 import ChapterContent from './ChapterContent';
 import Navigation from './Navigation';
 import PrevPage from './PrevPage';
+import { notFound } from 'next/navigation';
 
 const api_key = process.env.API_KEY;
 
@@ -78,6 +79,10 @@ export default async function Page({
       chepterData,
       bookNameData,
     ]);
+
+  if (!chapterD || chapterD.length < 1) {
+    notFound();
+  }
 
   return (
     <Container isRead>

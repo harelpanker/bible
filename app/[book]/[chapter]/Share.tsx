@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { usePathname } from 'next/navigation';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import {
   EmailShareButton,
@@ -22,7 +23,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { usePathname } from 'next/navigation';
 
 type ShareProps = {};
 

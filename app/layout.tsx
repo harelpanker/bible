@@ -1,10 +1,11 @@
-import Footer from '@/components/Footer';
 import './globals.css';
 import localFont from 'next/font/local';
+
+import Footer from '@/components/Footer';
 import Header from '@/components/navbar/Header';
 
 export const metadata = {
-  title: 'The Holy Bible',
+  title: 'The Holy Bible Web App',
   description: '',
 };
 
