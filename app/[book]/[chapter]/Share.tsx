@@ -1,20 +1,22 @@
+// 'use client';
 import { FC } from 'react';
 import { usePathname } from 'next/navigation';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+// import {
+//   EmailShareButton,
+//   FacebookShareButton,
+//   LinkedinShareButton,
+//   TelegramShareButton,
+//   TwitterIcon,
+//   TwitterShareButton,
+// } from 'react-share';
 import {
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-} from 'react-share';
-import {
-  Linkedin,
+  // Linkedin,
   Share as ShareIcon,
-  Mail,
-  Send,
-  Facebook,
-  Twitter,
+  // Mail,
+  // Send,
+  // Facebook,
+  // Twitter,
   Copy,
 } from 'lucide-react';
 import {
@@ -26,7 +28,7 @@ import {
 
 type ShareProps = {};
 
-const Share: FC<ShareProps> = ({}) => {
+const Share: FC<ShareProps> = () => {
   const pathname = usePathname();
   const origin =
     typeof window !== 'undefined' && window.location.origin
@@ -36,57 +38,14 @@ const Share: FC<ShareProps> = ({}) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className='rounded py-1 px-3 border border-slate-200 bg-slate-100 flex items-center justify-center gap-2'>
-        <ShareIcon className='text-slate-700 w-4 h-4' />
+      <DropdownMenuTrigger className='flex items-center justify-center gap-2 rounded border border-slate-200 bg-slate-100 px-3 py-1'>
+        <ShareIcon className='h-4 w-4 text-slate-700' />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        {/* email */}
-        <DropdownMenuItem>
-          <EmailShareButton url={fullPath} className='flex items-center gap-2'>
-            <Mail className='text-slate-700 w-4 h-4' />
-            <span>Email</span>
-          </EmailShareButton>
-        </DropdownMenuItem>
-        {/* facebook */}
-        <DropdownMenuItem>
-          <FacebookShareButton
-            url={fullPath}
-            className='flex items-center gap-2'>
-            <Facebook className='text-slate-700 w-4 h-4' />
-            <span>Facebook</span>
-          </FacebookShareButton>
-        </DropdownMenuItem>
-        {/* Linkedin */}
-        <DropdownMenuItem>
-          <LinkedinShareButton
-            url={fullPath}
-            className='flex items-center gap-2'>
-            <Linkedin className='text-slate-700 w-4 h-4' />
-            <span>Linkedin</span>
-          </LinkedinShareButton>
-        </DropdownMenuItem>
-        {/* Telegram */}
-        <DropdownMenuItem>
-          <TelegramShareButton
-            url={fullPath}
-            className='flex items-center gap-2'>
-            <Send className='text-slate-700 w-4 h-4' />
-            <span>Telegram</span>
-          </TelegramShareButton>
-        </DropdownMenuItem>
-        {/* Twitter */}
-        <DropdownMenuItem>
-          <TwitterShareButton
-            url={fullPath}
-            className='flex items-center gap-2'>
-            <Twitter className='text-slate-700 w-4 h-4' />
-            <span>Twitter</span>
-          </TwitterShareButton>
-        </DropdownMenuItem>
         <DropdownMenuItem>
           <CopyToClipboard text={fullPath}>
             <button className='flex items-center gap-2'>
-              <Copy className='text-slate-700 w-4 h-4' /> Copy URL
+              <Copy className='h-4 w-4 text-slate-700' /> Copy URL
             </button>
           </CopyToClipboard>
         </DropdownMenuItem>

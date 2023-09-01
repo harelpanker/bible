@@ -20,7 +20,7 @@ async function getData() {
   return res.json();
 }
 
-export default async function OTPage() {
+export default async function NTPage() {
   const data = await getData();
 
   return (

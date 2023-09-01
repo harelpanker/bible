@@ -31,7 +31,7 @@ type Inputs = {
   search_query: string;
 };
 
-const Page = ({}) => {
+const Page = () => {
   const [resaults, setResaults] = useState([]);
   const [paginationNumber, setPaginationNumber] = useState(12);
 
@@ -73,8 +73,7 @@ const Page = ({}) => {
         {/* search component */}
         <form
           className='mx-auto flex w-full max-w-md gap-2 pb-2'
-          onSubmit={handleSubmit(onSubmit)}
-        >
+          onSubmit={handleSubmit(onSubmit)}>
           <div className='flex grow flex-col gap-2'>
             <Input
               {...register('search_query')}
@@ -99,8 +98,7 @@ const Page = ({}) => {
               {resaults.slice(0, paginationNumber).map((item: ResaultProps) => (
                 <li
                   className='flex flex-col gap-3 pt-6 first:pt-0'
-                  key={item.id}
-                >
+                  key={item.id}>
                   <div className='flex w-full items-center justify-between'>
                     <Link href={`/${item.b}/${item.c}/${item.id}`}>
                       <LinkIcon className='h-4 w-4' />
@@ -119,8 +117,7 @@ const Page = ({}) => {
             {paginationNumber < resaults.length && (
               <div className='flex'>
                 <Button
-                  onClick={() => setPaginationNumber(paginationNumber + 12)}
-                >
+                  onClick={() => setPaginationNumber(paginationNumber + 12)}>
                   Load more
                 </Button>
               </div>
